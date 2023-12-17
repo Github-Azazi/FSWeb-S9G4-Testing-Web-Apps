@@ -41,7 +41,7 @@ test('kullanıcı doğru ad ve soyad girdiğinde ama email girmediğinde BİR ha
     const adInput = screen.getByPlaceholderText('İlhan');
     const soyadInput = screen.getByPlaceholderText('Mansız');
     userEvent.type(adInput, 'Abdulrahman');
-    userEvent.type(soyadInput, 'Aydoğan');
+    userEvent.type(soyadInput, 'Mansız');
     userEvent.type()
     fireEvent.click(screen.getByText('Gönder'));
     await waitFor (() => expect(screen.getByText(/Hata: email geçerli bir email adresi olmalıdır./)).toBeInTheDocument());
@@ -77,8 +77,8 @@ test('form gönderildiğinde girilen tüm değerler render ediliyor.', async () 
     const emailInput = screen.getByPlaceholderText('yüzyılıngolcüsü@hotmail.com');
     const mesajInput = screen.getByLabelText('Mesaj');
 
-    userEvent.type(adInput, 'Okyanus');
-    userEvent.type(soyadInput, 'Aydoğan');
+    userEvent.type(adInput, 'Kahramanilhan');
+    userEvent.type(soyadInput, 'Mansız');
     userEvent.type(emailInput, 'yüzyılıngolcüsü@hotmail.com');
     userEvent.type(mesajInput ,screen.getByLabelText('Mesaj'));
 
@@ -88,8 +88,8 @@ test('form gönderildiğinde girilen tüm değerler render ediliyor.', async () 
     userEvent.type(emailInput, '');
     userEvent.type(mesajInput ,'');
 
-    await waitFor (() => expect(screen.getByText('Okyanus')).toBeInTheDocument());
-    await waitFor (() => expect(screen.getByText('Aydoğan')).toBeInTheDocument());
+    await waitFor (() => expect(screen.getByText('Kahramanilhan')).toBeInTheDocument());
+    await waitFor (() => expect(screen.getByText('Mansız')).toBeInTheDocument());
     await waitFor (() => expect(screen.getByText('yüzyılıngolcüsü@hotmail.com')).toBeInTheDocument());
     await waitFor (() => expect(screen.getByText('Mesaj')).toBeInTheDocument());
 
@@ -103,8 +103,8 @@ test('ad,soyad, email render ediliyor. mesaj bölümü doldurulmadığında hata
     const adInput = screen.getByPlaceholderText('İlhan');
     const soyadInput = screen.getByPlaceholderText('Mansız');
     const emailInput = screen.getByPlaceholderText('yüzyılıngolcüsü@hotmail.com');
-    userEvent.type(adInput, 'Okyanus');
-    userEvent.type(soyadInput, 'Aydoğan');
+    userEvent.type(adInput, 'İlhan');
+    userEvent.type(soyadInput, 'Mansız');
     userEvent.type(emailInput, 'yüzyılıngolcüsü@hotmail.com');
     fireEvent.click(screen.getByText('Gönder'));
 
